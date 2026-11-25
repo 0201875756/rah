@@ -69,7 +69,7 @@ h1,h2,h3,h4{font-family:'Lalezar','Vazirmatn',sans-serif;font-weight:400}
 .card h3{font-size:1.3rem;color:var(--text-main);margin-bottom:8px}
 .card p{color:var(--text-muted);font-size:.85rem;font-family:'Vazirmatn',sans-serif;line-height:1.6;flex-grow:1}
 
-/* قلب خاطرات: یک قاب عکس اسلایدی */
+/* قلب خاطرات */
 .memories-section{padding:80px 20px;max-width:1200px;margin:0 auto;border-top:2px solid #e2e8f0}
 .memory-slider{position:relative;max-width:900px;height:450px;margin:auto;overflow:hidden;border-radius:22px;box-shadow:var(--shadow-lg);background:#e2e8f0;border:5px solid var(--white)}
 .memory-slider img{width:100%;height:100%;object-fit:cover;display:block;opacity:1;transition:opacity .6s ease}
@@ -152,36 +152,49 @@ h1,h2,h3,h4{font-family:'Lalezar','Vazirmatn',sans-serif;font-weight:400}
     <p class="section-subtitle">خدمات و فعالیت‌های ما در یک نگاه</p>
   </div>
   <div class="grid-cards">
-    <div class="card reveal c-teal" id="اطلاع-رسانی">
+    
+    <!-- کارت ۱: اطلاع رسانی -->
+    <a href="news.php" class="card reveal c-teal" id="اطلاع-رسانی">
       <div class="card-icon">📢</div>
       <h3>اطلاع رسانی</h3>
       <p>اطلاع‌رسانی برنامه‌ها، رویدادها و اخبار گروه به اعضا و خانواده‌ها.</p>
-    </div>
-    <div class="card reveal c-yellow" id="حضور-غیاب">
+    </a>
+
+    <!-- کارت ۲: حضور و غیاب -->
+    <a href="attendance.php" class="card reveal c-yellow" id="حضور-غیاب">
       <div class="card-icon">✅</div>
       <h3>حضور و غیاب</h3>
       <p>ثبت و پیگیری حضور منظم اعضا در جلسات و برنامه‌های گروه.</p>
-    </div>
-    <div class="card reveal c-orange" id="فرهنگی">
+    </a>
+
+    <!-- کارت ۳: فرهنگی -->
+    <a href="cultural.php" class="card reveal c-orange" id="فرهنگی">
       <div class="card-icon">📚</div>
       <h3>فرهنگی</h3>
       <p>برنامه‌های مذهبی و مناسبتی با محوریت تقویت باورهای دینی.</p>
-    </div>
-    <div class="card reveal c-purple" id="تربیت-بدنی">
+    </a>
+
+    <!-- کارت ۴: تربیت بدنی -->
+    <a href="index-slider-fixed(1) (1).html" class="card reveal c-purple" id="تربیت-بدنی">
       <div class="card-icon">⚽</div>
       <h3>تربیت بدنی</h3>
       <p>فعالیت‌های ورزشی و برنامه‌های نشاط‌آور برای سلامت جسم و روح.</p>
-    </div>
-    <div class="card reveal c-green" id="تدارکات">
+    </a>
+
+    <!-- کارت ۵: تدارکات -->
+    <a href="logistics.php" class="card reveal c-green" id="تدارکات">
       <div class="card-icon">📦</div>
       <h3>تدارکات</h3>
       <p>تأمین امکانات و مقدمات لازم برای برگزاری هرچه بهتر برنامه‌ها.</p>
-    </div>
-    <div class="card reveal c-pink" id="مهارت-آموزش">
+    </a>
+
+    <!-- کارت ۶: مهارت و آموزش -->
+    <a href="training.php" class="card reveal c-pink" id="مهارت-آموزش">
       <div class="card-icon">🎓</div>
       <h3>مهارت و آموزش</h3>
       <p>برگزاری دوره‌های مهارت‌آموزی و کارگاه‌های تخصصی برای رشد اعضا.</p>
-    </div>
+    </a>
+
   </div>
 </section>
 
@@ -294,7 +307,6 @@ function showMemory() {
     memoryImg.src = memoryImages[memoryIndex];
     memoryCaption.textContent = memoryCaptions[memoryIndex];
     memoryImg.onload = () => memoryImg.classList.remove("fade");
-    // اگر عکس از حافظه مرورگر بارگذاری شده باشد، onload نیز اجرا می‌شود.
     if (memoryImg.complete && memoryImg.naturalWidth > 0) {
       memoryImg.classList.remove("fade");
     }
