@@ -1,0 +1,733 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>لیگ ورزشی شهید تنگسیری</title>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;600;700;800&display=swap');
+
+:root {
+  --bg: #0A1020;
+  --card: #182338;
+  --orange: #FF5722;
+  --light: #F4F7FB;
+  --green: #22C55E;
+  --muted: #94A3B8;
+  --border: #334155;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+@font-face {
+  font-family: vazir;
+  src: url(vazir);
+}
+
+body {
+  font-family: vazir;
+  margin: 0;
+  font-family: 'Vazirmatn', sans-serif;
+  background: var(--bg);
+  color: var(--light);
+}
+
+button, input, select {
+  font-family: inherit;
+}
+
+.container {
+  max-width: 1200px;
+  margin: auto;
+  padding: 24px;
+}
+
+.topbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 15px;
+  flex-wrap: wrap;
+  margin-bottom: 25px;
+}
+
+.back-link {
+  color: white;
+  text-decoration: none;
+  border: 1px solid var(--border);
+  padding: 10px 18px;
+  border-radius: 12px;
+  transition: .2s;
+}
+
+.back-link:hover {
+  background: var(--orange);
+  border-color: var(--orange);
+}
+
+.mode-btn {
+  background: var(--orange);
+  color: white;
+  border: 0;
+  border-radius: 12px;
+  padding: 11px 20px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.hero {
+  text-align: center;
+  background: linear-gradient(135deg, #182338, #101827);
+  border: 1px solid var(--border);
+  border-radius: 22px;
+  padding: 35px 20px;
+  margin-bottom: 25px;
+}
+
+.hero h1 {
+  color: var(--orange);
+  margin: 0 0 12px;
+  font-size: clamp(24px, 4vw, 38px);
+}
+
+.hero p {
+  color: var(--muted);
+  margin: 0;
+}
+
+.stats {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 15px;
+  margin-bottom: 25px;
+}
+
+.stat {
+  background: var(--card);
+  padding: 20px;
+  border-radius: 16px;
+  border: 1px solid var(--border);
+  text-align: center;
+}
+
+.stat h3 {
+  margin: 0 0 8px;
+  font-size: 14px;
+  color: var(--muted);
+}
+
+.stat strong {
+  font-size: 26px;
+  color: var(--orange);
+}
+
+.panel {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 18px;
+  padding: 22px;
+  margin-bottom: 22px;
+}
+
+.panel h2 {
+  margin-top: 0;
+  font-size: 20px;
+}
+
+.bracket-img {
+  width: 100%;
+  display: block;
+  border-radius: 14px;
+  border: 1px solid var(--border);
+}
+
+.stages {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 15px;
+}
+
+.stage {
+  background: #101827;
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 15px;
+}
+
+.stage h3 {
+  color: var(--orange);
+  text-align: center;
+  font-size: 15px;
+  margin: 0 0 15px;
+}
+
+.match {
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 12px;
+  margin-bottom: 12px;
+  background: var(--card);
+}
+
+.match-name {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  margin-bottom: 8px;
+}
+
+.match-name.winner {
+  color: var(--green);
+  font-weight: bold;
+}
+
+.match small {
+  color: var(--muted);
+}
+
+.match-status {
+  display: inline-block;
+  font-size: 11px;
+  color: var(--muted);
+  margin-top: 8px;
+}
+
+.match-status.done {
+  color: var(--green);
+}
+
+.admin-form {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+input, select {
+  width: 100%;
+  padding: 12px;
+  border-radius: 10px;
+  background: #0A1020;
+  color: white;
+  border: 1px solid var(--border);
+  outline: none;
+}
+
+input:focus, select:focus {
+  border-color: var(--orange);
+}
+
+.save-btn {
+  background: var(--green);
+  color: #06210F;
+  border: 0;
+  padding: 12px;
+  border-radius: 10px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.reset-btn {
+  background: #991B1B;
+  color: white;
+  border: 0;
+  padding: 10px 15px;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.hidden {
+  display: none !important;
+}
+
+.champion {
+  text-align: center;
+  padding: 30px;
+  border: 1px solid #B8860B;
+  border-radius: 18px;
+  background: linear-gradient(135deg, #332810, #182338);
+}
+
+.champion h2 {
+  color: #FFD700;
+  font-size: 28px;
+}
+
+footer {
+  text-align: center;
+  color: var(--muted);
+  padding: 25px;
+}
+
+@media (max-width: 850px) {
+  .stats {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .stages {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .admin-form {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 550px) {
+  .container {
+    padding: 12px;
+  }
+
+  .stages {
+    grid-template-columns: 1fr;
+  }
+
+  .admin-form {
+    grid-template-columns: 1fr;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+  <div class="topbar">
+    <button class="mode-btn" onclick="toggleAdmin()">
+      ورود به مدیریت لیگ
+    </button>
+
+    <a class="back-link" href="./index-slider-fixed(1) (1).html">← بازگشت به سایت</a>
+  </div>
+
+  <section class="hero">
+    <h1>لیگ ورزشی شهید تنگسیری</h1>
+    <p>تربیت بدنی گروه ابوفاضل(ع)</p>
+  </section>
+
+  <!-- آمار لیگ -->
+  <section class="stats">
+    <div class="stat">
+      <h3>تعداد شرکت‌کنندگان</h3>
+      <strong id="playersCount">۲۰</strong>
+    </div>
+
+    <div class="stat">
+      <h3>مسابقات برگزارشده</h3>
+      <strong id="playedCount">۰</strong>
+    </div>
+
+    <div class="stat">
+      <h3>مسابقات باقی‌مانده</h3>
+      <strong id="remainingCount">۱۹</strong>
+    </div>
+
+    <div class="stat">
+      <h3>مرحلهٔ فعلی</h3>
+      <strong id="currentStage">مرحله اول</strong>
+    </div>
+  </section>
+
+  <!-- عکس جدول -->
+  <section class="panel">
+    <h2>جدول مسابقات لیگ</h2>
+    <img
+      src="../image/6231122528751984387_173390373916459.jpg"
+      class="bracket-img"
+      alt="جدول مسابقات لیگ ورزشی شهید تنگسیری"
+    >
+  </section>
+
+  <!-- مدیریت -->
+  <section id="adminPanel" class="panel hidden">
+    <h2>مدیریت مسابقات</h2>
+
+    <p style="color:var(--muted)">
+      نتیجهٔ مسابقه را ثبت کن. برنده به‌صورت خودکار به مرحلهٔ بعد می‌رود.
+    </p>
+
+    <div class="admin-form">
+      <select id="matchSelect"></select>
+
+      <input
+        type="number"
+        id="scoreA"
+        placeholder="امتیاز شرکت‌کننده اول"
+        min="0"
+      >
+
+      <input
+        type="number"
+        id="scoreB"
+        placeholder="امتیاز شرکت‌کننده دوم"
+        min="0"
+      >
+
+      <button class="save-btn" onclick="saveResult()">
+        ثبت نتیجه
+      </button>
+
+      <button class="reset-btn" onclick="resetLeague()">
+        پاک‌کردن نتایج لیگ
+      </button>
+    </div>
+  </section>
+
+  <!-- مراحل -->
+  <section class="panel">
+    <h2>روند برگزاری لیگ</h2>
+    <div class="stages" id="stagesContainer"></div>
+  </section>
+
+  <!-- قهرمان -->
+  <section id="championPanel" class="champion hidden">
+    <h2>🏆 قهرمان لیگ</h2>
+    <h3 id="championName"></h3>
+  </section>
+
+</div>
+
+<footer>
+  تربیت بدنی گروه ابوفاضل(ع)
+</footer>
+
+<script>
+/*
+  نام‌ها را مطابق جدول خودت وارد کن.
+  ترتیب نفرات باید مطابق جایگاه آن‌ها در جدول مسابقات باشد.
+*/
+
+const players = [
+  "پورایوانی",
+  "پویا",
+  "نوذری",
+  "سرخانی",
+  "رسولی",
+  "مبارکی",
+  "ملاصالحی",
+  "فتاحی",
+  "شجاعی",
+  "طاهری",
+  "خوش باش",
+  "فامیلی",
+  "منبران",
+  "مقدادی",
+  "وطن خواه",
+  "اکبری",
+  "ابراهیمی",
+  "مزینی",
+  "میرداموندی",
+  "خداکریمی"
+];
+
+/*
+  برای تعداد ۲۰ نفر:
+  ۴ مسابقه مقدماتی برای رسیدن به ۱۶ نفر
+  سپس یک‌هشتم، یک‌چهارم، نیمه‌نهایی و فینال
+
+  اگر تعداد شرکت‌کنندگان یا ترتیب جدول فرق دارد،
+  ساختار مسابقات باید متناسب با جدول تنظیم شود.
+*/
+
+const stages = [
+  {
+    name: "مرحله مقدماتی",
+    matches: [
+      ["پورایوانی", "پویا"],
+      ["نوذری", "سرخانی"],
+      ["رسولی", "مبارکی"],
+      ["ملاصالحی", "فتاحی"]
+    ]
+  },
+  {
+    name: "یک‌هشتم نهایی",
+    matches: [
+      ["برنده مسابقه ۱", "برنده مسابقه ۲"],
+      ["برنده مسابقه ۳", "برنده مسابقه ۴"],
+      ["شجاعی", "برنده مسابقه ۵"],
+      ["طاهری", "برنده مسابقه ۶"],
+      ["خوش باش", "برنده مسابقه ۷"],
+      ["فامیلی", "منبران"],
+      ["مقدادی", "وطن خواه"],
+      ["اکبری", "ابراهیمی"]
+    ]
+  },
+  {
+    name: "یک‌چهارم نهایی",
+    matches: [
+      ["برنده یک‌هشتم ۱", "برنده یک‌هشتم ۲"],
+      ["برنده یک‌هشتم ۳", "برنده یک‌هشتم ۴"],
+      ["برنده یک‌هشتم ۵", "برنده یک‌هشتم ۶"],
+      ["برنده یک‌هشتم ۷", "برنده یک‌هشتم ۸"]
+    ]
+  },
+  {
+    name: "نیمه‌نهایی",
+    matches: [
+      ["برنده یک‌چهارم ۱", "برنده یک‌چهارم ۲"],
+      ["برنده یک‌چهارم ۳", "برنده یک‌چهارم ۴"]
+    ]
+  },
+  {
+    name: "فینال",
+    matches: [
+      ["برنده نیمه‌نهایی ۱", "برنده نیمه‌نهایی ۲"]
+    ]
+  }
+];
+
+let results = JSON.parse(
+  localStorage.getItem("tangsiriLeagueResults") || "{}"
+);
+
+let adminMode = false;
+
+function saveData() {
+  localStorage.setItem(
+    "tangsiriLeagueResults",
+    JSON.stringify(results)
+  );
+}
+
+function getMatchKey(stageIndex, matchIndex) {
+  return stageIndex + "-" + matchIndex;
+}
+
+function getWinner(stageIndex, matchIndex) {
+  const key = getMatchKey(stageIndex, matchIndex);
+  return results[key]?.winner || null;
+}
+
+function resolvePlayer(name) {
+  if (!name.startsWith("برنده")) return name;
+
+  const parts = name.match(/برنده (.*) (\d+)/);
+
+  if (!parts) return name;
+
+  const stageName = parts[1];
+  const matchNumber = Number(parts[2]) - 1;
+
+  const stageIndex = stages.findIndex(
+    stage => stage.name.includes(stageName)
+  );
+
+  if (stageIndex < 0) return name;
+
+  return getWinner(stageIndex, matchNumber) || name;
+}
+
+function getResolvedMatches(stageIndex) {
+  return stages[stageIndex].matches.map(match => ({
+    a: resolvePlayer(match[0]),
+    b: resolvePlayer(match[1])
+  }));
+}
+
+function renderStages() {
+  const container = document.getElementById("stagesContainer");
+  container.innerHTML = "";
+
+  let played = 0;
+  let total = 0;
+  let activeStage = 0;
+
+  stages.forEach((stage, stageIndex) => {
+    const stageBox = document.createElement("div");
+    stageBox.className = "stage";
+
+    const title = document.createElement("h3");
+    title.textContent = stage.name;
+    stageBox.appendChild(title);
+
+    const matches = getResolvedMatches(stageIndex);
+
+    matches.forEach((match, matchIndex) => {
+      total++;
+
+      const key = getMatchKey(stageIndex, matchIndex);
+      const result = results[key];
+
+      if (result) played++;
+
+      const card = document.createElement("div");
+      card.className = "match";
+
+      const nameA = document.createElement("div");
+      nameA.className =
+        "match-name " +
+        (result?.winner === match.a ? "winner" : "");
+      nameA.textContent =
+        match.a + (result ? " (" + result.scoreA + ")" : "");
+
+      const nameB = document.createElement("div");
+      nameB.className =
+        "match-name " +
+        (result?.winner === match.b ? "winner" : "");
+      nameB.textContent =
+        match.b + (result ? " (" + result.scoreB + ")" : "");
+
+      const status = document.createElement("small");
+      status.className = "match-status " + (result ? "done" : "");
+      status.textContent = result
+        ? "پایان‌یافته"
+        : "برگزار نشده";
+
+      card.appendChild(nameA);
+      card.appendChild(nameB);
+      card.appendChild(status);
+
+      stageBox.appendChild(card);
+    });
+
+    if (
+      activeStage === 0 &&
+      stage.matches.some((match, matchIndex) => {
+        return !results[getMatchKey(stageIndex, matchIndex)];
+      })
+    ) {
+      activeStage = stageIndex;
+    }
+
+    container.appendChild(stageBox);
+  });
+
+  document.getElementById("playedCount").textContent = played;
+  document.getElementById("remainingCount").textContent =
+    Math.max(total - played, 0);
+
+  document.getElementById("currentStage").textContent =
+    played === total ? "پایان لیگ" : stages[activeStage].name;
+
+  renderMatchSelect();
+  renderChampion();
+}
+
+function renderMatchSelect() {
+  const select = document.getElementById("matchSelect");
+  select.innerHTML = "";
+
+  stages.forEach((stage, stageIndex) => {
+    const matches = getResolvedMatches(stageIndex);
+
+    matches.forEach((match, matchIndex) => {
+      const key = getMatchKey(stageIndex, matchIndex);
+
+      if (results[key]) return;
+
+      if (
+        match.a.startsWith("برنده") ||
+        match.b.startsWith("برنده")
+      ) return;
+
+      const option = document.createElement("option");
+      option.value = key;
+      option.textContent =
+        stage.name + " | " + match.a + " - " + match.b;
+
+      select.appendChild(option);
+    });
+  });
+}
+
+function saveResult() {
+  const key = document.getElementById("matchSelect").value;
+
+  if (!key) {
+    alert("مسابقه‌ای برای ثبت نتیجه وجود ندارد.");
+    return;
+  }
+
+  const scoreA = Number(document.getElementById("scoreA").value);
+  const scoreB = Number(document.getElementById("scoreB").value);
+
+  if (
+    document.getElementById("scoreA").value === "" ||
+    document.getElementById("scoreB").value === ""
+  ) {
+    alert("امتیاز هر دو شرکت‌کننده را وارد کن.");
+    return;
+  }
+
+  if (scoreA === scoreB) {
+    alert("نتیجه مساوی است. برنده را طبق قوانین لیگ مشخص کن.");
+    return;
+  }
+
+  const [stageIndex, matchIndex] = key.split("-").map(Number);
+
+  const match = getResolvedMatches(stageIndex)[matchIndex];
+
+  results[key] = {
+    scoreA,
+    scoreB,
+    winner: scoreA > scoreB ? match.a : match.b
+  };
+
+  saveData();
+  renderStages();
+
+  document.getElementById("scoreA").value = "";
+  document.getElementById("scoreB").value = "";
+
+  alert("نتیجه مسابقه ثبت شد.");
+}
+
+function renderChampion() {
+  const finalKey = getMatchKey(stages.length - 1, 0);
+  const finalResult = results[finalKey];
+
+  const panel = document.getElementById("championPanel");
+
+  if (finalResult) {
+    panel.classList.remove("hidden");
+    document.getElementById("championName").textContent =
+      finalResult.winner;
+  } else {
+    panel.classList.add("hidden");
+  }
+}
+
+function toggleAdmin() {
+  // هنگام ورود به مدیریت، رمز مسئول تربیت بدنی پرسیده می‌شود.
+  if (!adminMode) {
+    const password = prompt("رمز مسئول تربیت بدنی را وارد کنید:");
+
+    if (password !== "293293293") {
+      if (password !== null) alert("رمز واردشده صحیح نیست.");
+      return;
+    }
+  }
+
+  adminMode = !adminMode;
+
+  document.getElementById("adminPanel").classList.toggle(
+    "hidden",
+    !adminMode
+  );
+
+  document.querySelector(".mode-btn").textContent =
+    adminMode ? "خروج از مدیریت" : "ورود به مدیریت لیگ";
+}
+
+function resetLeague() {
+  const confirmation = confirm(
+    "آیا مطمئنی می‌خواهی تمام نتایج لیگ پاک شود؟"
+  );
+
+  if (!confirmation) return;
+
+  results = {};
+  saveData();
+  renderStages();
+}
+
+renderStages();
+</script>
+
+</body>
+</html>

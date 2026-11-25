@@ -1,0 +1,313 @@
+<!doctype html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#0A1020"><title>مجموعه ورزشی ابوفاضل(ع)</title>
+<style>
+@font-face {
+  font-family: vazir;
+  src: url(../font/Vazir-Medium.ttf);
+}
+ 
+:root{font-family: vazir; --bg:#0A1020;--orange:#FF5722;--light:#F4F7FB;--green:#22C55E;--card:#182338;--muted:#9BA8BB;--line:#34445D}
+*{font-family: vazir; box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:85px}
+body{font-family: vazir; margin:0;background:radial-gradient(ellipse at 85% 8%,rgba(255,87,34,.07),transparent 28%),radial-gradient(ellipse at 8% 48%,rgba(34,197,94,.045),transparent 30%),var(--bg);color:#f8fafc;line-height:1.8}
+a{text-decoration:none;color:inherit}
+button,input{font:inherit}
+button{cursor:pointer}
+.container{width:min(1200px,calc(100% - 36px));margin:auto}
+header{position:sticky;top:0;z-index:10;background:#0a1020f5;border-bottom:1px solid #26334a}
+.nav{min-height:74px;display:flex;align-items:center;justify-content:space-between;gap:18px}
+.brand{display:flex;align-items:center;gap:12px;white-space:nowrap}
+.logo{width:50px;height:50px; display:grid;place-items:center;}
+.brand b{font-size:17px}
+.links{display:flex;gap:19px;align-items:center}
+.links a{font-size:13px;white-space:nowrap}
+.links a:hover{color:var(--orange)}
+.navitem{display:flex;align-items:center;gap:7px}
+.slot{align-items: center;}
+.btn{border:0;border-radius:999px;padding:11px 20px;color:white;background:var(--orange);display:flex;align-items:center;justify-content:center;gap:3px;font-weight:bold}
+.green{background:var(--green);color:#04120a}
+.mobile{display:none;background:transparent;border:1px solid var(--line);color:white;border-radius:8px;padding:7px 10px}
+.hero{padding:38px 0 46px;background:radial-gradient(ellipse at 15% 35%,#152945,transparent 55%),linear-gradient(120deg,#07101f,#0b1930)}
+.heroGrid{display:grid;grid-template-columns:1.05fr .95fr;gap:42px;align-items:center;direction:ltr}
+.heroGrid>*{direction:rtl}
+.heroCopy h1{font-size:clamp(32px,4vw,53px);line-height:1.35;margin:0 0 18px;font-weight:900}
+.heroCopy h1 span{display:block;color:var(--orange)}
+.heroCopy p{color:#c4cfde;max-width:520px;margin:0 0 24px}
+.media{height:320px;position:relative;border-radius:18px;background:linear-gradient(135deg,#182338,#080f1e);display:grid;place-items:center;text-align:center;color:#d4dce8}
+.mediaText{display:flex;align-items:center;flex-direction:column;gap:12px}
+/* Slider images: only the active image is visible */
+.media{overflow:hidden}
+.slideImage{display:none;position:absolute;inset:0;width:100%;height:100%;object-fit:cover;border-radius:inherit}
+.slideImage.active{display:block}
+/* .photoSlot{width:54px;height:46px;border:1px dashed #a8b5c7;border-radius:8px} */
+.arrows{position:absolute;top:45%;left:12px;right:12px;display:flex;justify-content:space-between}
+.arrows button{border:0;border-radius:50%;width:38px;height:38px;background:#e7edf5;color:#0a1020;font-size:22px}
+.dots{position:absolute;bottom:14px;display:flex;gap:9px}
+.dot{width:9px;height:9px;padding:0;border:0;border-radius:50%;background:#8591a3}
+.dot.active{background:var(--orange)}
+.section{padding:54px 0}
+.light{background:var(--light);color:#0a1020}
+.heading{display:flex;justify-content:space-between;align-items:center;gap:18px;margin-bottom:26px}
+.heading h2{font-size:clamp(26px,3vw,35px);margin:0}
+.heading p{margin:0;color:#718096;font-size:13px}
+.outline{border:1px solid var(--green);color:var(--green);background:transparent;border-radius:999px;padding:8px 18px;font-size:13px}
+.services{display:grid;grid-template-columns:repeat(4,1fr);gap:15px}
+.service{background:var(--card);color:white;border:1px solid #263a56;border-radius:14px;padding:20px 12px;text-align:center;min-height:164px;display:flex;align-items:center;justify-content:center;flex-direction:column;transition:.2s}
+.service:hover{transform:translateY(-4px);border-color:var(--orange)}
+.service .slot{width:54px;height:54px;margin-bottom:8px}
+.service h3{font-size:16px;margin:0 0 3px}
+.service a{color:var(--orange);font-size:13px;font-weight:bold}
+.extra{display:none;margin-top:14px}
+.extra.show{display:grid}
+.coaches{background:radial-gradient(ellipse at 10% 70%,#132741,transparent 50%),#081323}
+.coachGrid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+.coach{border:1px solid #43536b;background:#18233899;border-radius:14px;padding:18px 12px;text-align:center}
+.coachPhoto{width:76px;height:76px;border:1px dashed #9ba8bb;border-radius:12px;margin:0 auto 9px;display:grid;place-items:center;color:#9ba8bb;font-size:11px}
+.coach h3{font-size:17px;margin:0}
+.coach p{font-size:13px;color:#c6d0df;margin:2px 0}
+.line{width:74px;height:4px;background:var(--orange);border-radius:5px;margin:12px auto 0}
+.coach:nth-child(even) .line{background:var(--green)}
+.specialists{background:linear-gradient(135deg,#0a1020 0%,#111d31 52%,#0a1020 100%);position:relative;overflow:hidden}
+.specialists:before{content:"";position:absolute;width:340px;height:340px;border-radius:50%;background:rgba(255,87,34,.055);filter:blur(50px);top:-140px;left:-90px;pointer-events:none}
+.specialistGrid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:15px;position:relative}
+.specialist{background:linear-gradient(145deg,#1b2940,#121d30);border:1px solid #35465f;border-radius:15px;padding:22px 14px;text-align:center;box-shadow:0 12px 28px #0002;transition:transform .2s,border-color .2s}
+.specialist:hover{transform:translateY(-4px);border-color:var(--orange)}
+.specialistPhoto{width:82px;height:82px;border:1px ;margin:0 auto 12px;display:grid;place-items:center;color:#a6b4c7;font-size:11px;}
+.specialist h3{font-size:17px;margin:0 0 4px}
+.specialist p{font-size:13px;color:#bdc9d9;margin:0}
+footer{padding:46px 0 0;background:radial-gradient(ellipse at 85% 0%,#172943 0%,#091321 42%,#050c18 78%);border-top:1px solid #35445b;position:relative;overflow:hidden}
+footer:before{content:"";display:block;width:190px;height:4px;background:var(--orange);border-radius:0 0 8px 8px;position:absolute;top:0;right:7%}
+.footerGrid{display:grid;grid-template-columns:1.05fr .75fr .95fr .95fr 1.3fr;column-gap:38px;row-gap:30px;padding-bottom:38px;align-items:start}
+.footerGrid>div{min-width:0}
+.footerBrand{display:flex;align-items:center;gap:30px;margin-bottom:17px;}
+.footerLogo{width:92px;height:82px;flex:0 0 92px;display:grid;place-items:center;text-align:center;padding:7px;}
+.footerBrand h3{margin:0;font-size:21px;line-height:1.6}
+.footerBrand h3 span{color:var(--orange)}
+.otherSites a{display:block;color:#aab5c5;font-size:13px;padding:8px 0;transition:color .2s,transform .2s;border-bottom:1px solid #1f3047}
+.otherSites a:before{content:"↗";color:var(--orange);margin-left:8px;font-size:13px}
+.otherSites a:hover{color:var(--orange);transform:translateX(-3px)}
+.quickTitle{font-size:16px;margin:0 0 16px;color:#f8fafc;padding-bottom:10px;border-bottom:1px solid #2b3b52}
+.quickLinks a{display:block;color:#aab5c5;font-size:13px;padding:6px 0;transition:color .2s,transform .2s}
+.quickLinks a:before{content:"‹";color:var(--orange);margin-left:8px;font-size:17px}
+.quickLinks a:hover{color:var(--orange);transform:translateX(-3px)}
+.muted{font-size:13px;line-height:2;color:#aab5c5;margin:0}
+.contactTitle{font-size:16px;margin:0 0 16px;padding-bottom:10px;border-bottom:1px solid #2b3b52;color:#f8fafc}
+.contactIcons{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:0 0 14px}
+.contactItem{display:flex;align-items:center;gap:3px;font-size:13px;color:#dbe4ef;background:#101d30;border:1px solid #283a52;border-radius:12px;padding:10px}
+.contactItem .slot{width:34px;height:34px;flex:0 0 34px;display:grid;place-items:center}
+.phone{display:flex;margin-top:0}
+.phone a{width:100%;background:#111f33;color:#fff;border:1px solid #3c506c;border-radius:10px;padding:12px;text-decoration:none;font-weight:700;letter-spacing:.4px}
+.phone a:before{content:"☎  ";color:var(--green)}
+.authWrap{grid-column:1/-1}
+.auth{display:grid;grid-template-columns:190px minmax(0,1fr);column-gap:22px;align-items:center;border:1px solid #354963;border-radius:18px;padding:18px;background:linear-gradient(145deg,#142239,#0a1424);box-shadow:0 14px 34px #0003}
+.auth:before{content:"حساب کاربری";display:block;grid-column:1;grid-row:1;font-weight:700;font-size:16px;color:#fff;margin:0 0 10px}
+.auth #authForm{grid-column:2;grid-row:1 / span 2;min-width:0}
+.auth .tabs{grid-column:1;grid-row:2;flex-direction:row;align-self:start}
+.tabs{display:flex;gap:8px;margin:0 0 15px}
+.tab{flex:1;background:#0c192b;color:#cbd5e1;border:1px solid #51627a;padding:9px 12px;border-radius:9px;font-size:13px}
+.tab.active{background:var(--orange);color:white;border-color:var(--orange)}
+.fields{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:9px}
+.field{width:100%;min-width:0;background:#081323;border:1px solid #43536b;border-radius:8px;padding:10px 12px;color:white;outline:none}
+.field:focus{border-color:var(--orange)}
+.full{grid-column:1/-1}
+.codeRow{display:flex;gap:8px}
+.codeRow .field{flex:1}
+.send{border:0;background:var(--orange);color:white;border-radius:8px;padding:8px 11px;font-size:12px;white-space:nowrap}
+.submit{width:100%;margin-top:10px}
+.note{font-size:11px;color:#91a0b4;margin:8px 0 0}
+.copyright{border-top:1px solid #34445d;padding:15px 0;display:flex;justify-content:space-between;gap:18px;flex-wrap:wrap;color:#c5cfdd;font-size:12px}
+.copyright strong{color:white}
+@media(max-width:1000px){.footerGrid{column-gap:28px}.auth{grid-template-columns:1fr}.auth:before{grid-column:1;grid-row:1}.auth .tabs{grid-column:1;grid-row:2;flex-direction:row}.auth #authForm{grid-column:1;grid-row:3}.specialistGrid{grid-template-columns:repeat(2,minmax(0,1fr))}.links{gap:10px}.links a{font-size:11px}.services{grid-template-columns:repeat(2,1fr)}.footerGrid{grid-template-columns:1fr 1fr;gap:28px}.authWrap{grid-column:1/-1}}
+@media(max-width:720px){.heroGrid{direction:rtl}.heroGrid>*{direction:rtl}.specialistGrid{grid-template-columns:repeat(2,minmax(0,1fr))}.container{width:calc(100% - 28px)}.nav{min-height:68px;flex-wrap:wrap;padding:9px 0}.brand b{font-size:14px}.logo{width:43px;height:39px}.mobile{display:block}.links{display:none;order:3;width:100%;flex-direction:column;align-items:stretch;gap:0}.links.open{display:flex}.links a{font-size:14px;padding:9px;border-bottom:1px solid #1d2a3f}.btn{padding:9px 12px;font-size:12px}.hero{padding:28px 0 34px}.heroGrid{grid-template-columns:1fr;gap:22px}.heroCopy{order:1}.media{order:2;height:245px}.heroCopy h1{font-size:35px}.heroCopy p{font-size:14px}.section{padding:38px 0}.services{gap:10px}.service{min-height:145px;padding:15px 8px}.service h3{font-size:14px}.coachGrid{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.footerGrid{grid-template-columns:1fr;gap:28px;padding-bottom:28px}.footerBrand{align-items:flex-start}.authWrap{grid-column:auto}.auth{padding:16px}.contactIcons{grid-template-columns:1fr 1fr}.copyright{border-top:1px solid #34445d;padding:16px 0}.fields{grid-template-columns:1fr}.full{grid-column:auto}.auth{display:block}.auth:before{margin-bottom:15px}.copyright{display:block}.copyright span,.copyright strong{display:block;margin:5px 0}}
+@media(max-width:380px){.specialistGrid,.services,.coachGrid{grid-template-columns:1fr}.heading h2{font-size:25px}}
+
+/* Polished, consistent hover interactions */
+:root{--hover-glow:rgba(255,87,34,.24)}
+a,button,.btn,.service-card,.coach-card,.expert-card,.auth-card,.otherSites a,.quickLinks a{transition:color .22s ease,background-color .22s ease,border-color .22s ease,box-shadow .22s ease,transform .22s ease,filter .22s ease}
+button,.btn{cursor:pointer;position:relative;overflow:hidden}
+.btn:hover,button:hover:not(:disabled){transform:translateY(-3px);filter:brightness(1.07);box-shadow:0 10px 24px var(--hover-glow)}
+.btn:active,button:active:not(:disabled){transform:translateY(-1px) scale(.985);box-shadow:0 4px 12px var(--hover-glow)}
+a:focus-visible,button:focus-visible{outline:3px solid rgba(255,87,34,.65);outline-offset:4px}
+.links a{display:inline-flex;align-items:center;position:relative;transition:color .22s ease,transform .22s ease}
+.links a::after{content:"";position:absolute;right:0;bottom:-7px;width:0;height:2px;border-radius:99px;background:var(--orange);transition:width .24s ease}
+.links a:hover{color:var(--orange);transform:translateY(-2px)}
+.links a:hover::after{width:100%}
+.service-card:hover,.coach-card:hover,.expert-card:hover{transform:translateY(-6px);border-color:rgba(255,87,34,.72);box-shadow:0 16px 32px rgba(0,0,0,.2),0 0 0 1px rgba(255,87,34,.12)}
+.otherSites a:hover,.quickLinks a:hover{color:var(--orange);transform:translateX(-4px)}
+input,textarea,select{transition:border-color .2s ease,box-shadow .2s ease}
+input:focus,textarea:focus,select:focus{outline:none;border-color:var(--orange)!important;box-shadow:0 0 0 3px rgba(255,87,34,.14)}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{transition:none!important;scroll-behavior:auto!important}}
+
+</style></head>
+<body>
+<header><div class="container nav">
+<div class="brand"><div class="logo"><img src="../image/ChatGPT Image ۲۷ مهر ۱۴۰۵، ۱۹_۰۴_۱۴.jpg " alt="#" height="50px" width="50px"></div><b>تربیت بدنی ابوفاضل(ع)</b></div>
+<button class="mobile" id="mobile" aria-expanded="false">☰ منو</button>
+<nav class="links" id="links" aria-label="منوی اصلی">
+
+<a class="navitem" href="#home">
+  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-house" viewBox="0 0 16 16">
+  <path d="M8.707 1.5a1 1 0 0 0-1.414 0L.646 8.146a.5.5 0 0 0 .708.708L2 8.207V13.5A1.5 1.5 0 0 0 3.5 15h9a1.5 1.5 0 0 0 1.5-1.5V8.207l.646.647a.5.5 0 0 0 .708-.708L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293zM13 7.207V13.5a.5.5 0 0 1-.5.5h-9a.5.5 0 0 1-.5-.5V7.207l5-5z"/>
+</svg>صفحه اصلی</a>
+
+<a class="navitem" href="./individual-sport-cleared.html">
+<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-lightning-charge" viewBox="0 0 16 16">
+  <path d="M11.251.068a.5.5 0 0 1 .227.58L9.677 6.5H13a.5.5 0 0 1 .364.843l-8 8.5a.5.5 0 0 1-.842-.49L6.323 9.5H3a.5.5 0 0 1-.364-.843l8-8.5a.5.5 0 0 1 .615-.09zM4.157 8.5H7a.5.5 0 0 1 .478.647L6.11 13.59l5.732-6.09H9a.5.5 0 0 1-.478-.647L9.89 2.41z"/>
+</svg>
+ ورزش فردی</a>
+
+<a class="navitem" href="./club-stats.html">
+  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-bar-chart-line" viewBox="0 0 16 16">
+  <path d="M11 2a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v12h.5a.5.5 0 0 1 0 1H.5a.5.5 0 0 1 0-1H1v-3a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v3h1V7a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v7h1zm1 12h2V2h-2zm-3 0V7H7v7zm-5 0v-3H2v3z"/>
+</svg>
+ آمار باشگاه</a>
+
+<a class="navitem" href="#services">
+<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-fork-knife" viewBox="0 0 16 16">
+  <path d="M13 .5c0-.276-.226-.506-.498-.465-1.703.257-2.94 2.012-3 8.462a.5.5 0 0 0 .498.5c.56.01 1 .13 1 1.003v5.5a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5zM4.25 0a.25.25 0 0 1 .25.25v5.122a.128.128 0 0 0 .256.006l.233-5.14A.25.25 0 0 1 5.24 0h.522a.25.25 0 0 1 .25.238l.233 5.14a.128.128 0 0 0 .256-.006V.25A.25.25 0 0 1 6.75 0h.29a.5.5 0 0 1 .498.458l.423 5.07a1.69 1.69 0 0 1-1.059 1.711l-.053.022a.92.92 0 0 0-.58.884L6.47 15a.971.971 0 1 1-1.942 0l.202-6.855a.92.92 0 0 0-.58-.884l-.053-.022a1.69 1.69 0 0 1-1.059-1.712L3.462.458A.5.5 0 0 1 3.96 0z"/>
+</svg>
+تغذیه</a>
+
+<a class="navitem" href="#services">
+  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trophy" viewBox="0 0 16 16">
+  <path d="M2.5.5A.5.5 0 0 1 3 0h10a.5.5 0 0 1 .5.5q0 .807-.034 1.536a3 3 0 1 1-1.133 5.89c-.79 1.865-1.878 2.777-2.833 3.011v2.173l1.425.356c.194.048.377.135.537.255L13.3 15.1a.5.5 0 0 1-.3.9H3a.5.5 0 0 1-.3-.9l1.838-1.379c.16-.12.343-.207.537-.255L6.5 13.11v-2.173c-.955-.234-2.043-1.146-2.833-3.012a3 3 0 1 1-1.132-5.89A33 33 0 0 1 2.5.5m.099 2.54a2 2 0 0 0 .72 3.935c-.333-1.05-.588-2.346-.72-3.935m10.083 3.935a2 2 0 0 0 .72-3.935c-.133 1.59-.388 2.885-.72 3.935M3.504 1q.01.775.056 1.469c.13 2.028.457 3.546.87 4.667C5.294 9.48 6.484 10 7 10a.5.5 0 0 1 .5.5v2.61a1 1 0 0 1-.757.97l-1.426.356a.5.5 0 0 0-.179.085L4.5 15h7l-.638-.479a.5.5 0 0 0-.18-.085l-1.425-.356a1 1 0 0 1-.757-.97V10.5A.5.5 0 0 1 9 10c.516 0 1.706-.52 2.57-2.864.413-1.12.74-2.64.87-4.667q.045-.694.056-1.469z"/>
+</svg>
+ چالش‌های ورزشی  </a>
+
+</nav>
+
+<a class="btn" href="#account">
+<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-fill" viewBox="0 0 16 16">
+  <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6"/>
+</svg>
+ورود | ثبت نام</a>
+</div>
+
+
+</div></header>
+<main>
+<section class="hero" id="home">
+<div class="container heroGrid">
+<div class="media" aria-label="اسلایدر تصاویر ورزشی">
+  <img class="slideImage active" src="../image/InShot_20261019_203212703 (1).jpg" alt="تصویر ورزشی اول" height="320px">
+  <img class="slideImage" src="../image/باشگاه فاطمی.jpg" alt="تصویر ورزشی دوم">
+  <img class="slideImage" src="../image/آزمون بارفیکس.jpg" alt="تصویر ورزشی سوم">
+  <img class="slideImage" src="../image/باشگاه شهیدان عبداللهی.jpg" alt="تصویر ورزشی چهارم">
+  <img class="slideImage" src="../image/ورزش در ادروها.jpg" alt="تصویر ورزشی پنچم">
+  <div class="arrows"><button id="prev" aria-label="اسلاید قبلی"> < </button><button id="next" aria-label="اسلاید بعدی"> ></button></div>
+  <div class="dots">
+    <button class="dot active" aria-label="اسلاید ۱"></button>
+    <button class="dot" aria-label="اسلاید ۲"></button>
+    <button class="dot" aria-label="اسلاید ۳"></button>
+    <button class="dot" aria-label="اسلاید ۴"></button>
+    <button class="dot" aria-label="اسلاید5"></button>
+  </div>
+</div>
+
+<div class="heroCopy"><h1>بدنت را قوی کن،<span>و به درد بخور...</span></h1><p>در مسیر بندگی و سربازی امام زمان(عج)، آمادگی جسمانی و پیشرفت ورزشی را دنبال کنید.</p><a class="btn" href="#services">مشاهده خدمات <span>←</span></a></div>
+</div></section>
+<section class="section light" id="services"><div class="container">
+<div class="heading"><div><h2>خدمات ورزشی</h2><p>بخش مورد نظر خود را انتخاب کنید</p></div><button class="outline" id="showAll">همه بخش‌ها</button></div>
+<div class="services">
+<article class="service"><span class="slot"><img src="../image/images (16).jpg" alt="#" height="50px" width="50px" style="border-radius: 30px;"></span><h3>ورزش فردی عمومی</h3><a href="./individual-sport-cleared.html">مشاهده بخش ←</a></article>
+<article class="service"><span class="slot"><img src="../image/InShot_20261026_195910094.jpg" alt="#" height="50px" width="50px" style="border-radius: 30px;"></span><h3>حرکات اصلاحی</h3><a href="./corrective-movements (1).html">مشاهده بخش ←</a></article>
+<article class="service"><span class="slot"><img src="../image/images (17).jpg" alt="#" height="50px" width="50px" style="border-radius: 30px;"></span><h3>باشگاه جودو</h3><a href="./club-stats.html">مشاهده بخش ←</a></article>
+<article class="service"><span class="slot"><img src="../image/golden-trophy-emblem-stockcake.jpg" alt="#" height="50px" width="50px" style="border-radius: 30px;"></span><h3>لیگ ورزشی</h3><a href="./ligvarzeshi.html.html">مشاهده بخش ←</a></article></div>
+<div class="services extra" id="extra"><article class="service"><span class="slot"><img src="../image/images (5).jpg" alt="#" height="50px" width="50px" style="border-radius: 30px;"></span><h3>تغذیه</h3><a href="#account">مشاهده بخش ←</a>
+</article><article class="service"><span class="slot"><img src="../image/images (6).jpg" alt="#" height="50px" width="50px" style="border-radius: 30px;"></span><h3>سانس‌ها</h3><a href="./club-stats.html">مشاهده بخش ←</a></article>
+<article class="service"><span class="slot"><img src="../image/images (18).jpg" alt="#" height="50px" width="50px" style="border-radius: 30px;"></span><h3>کلیپ‌ها</h3><a href="#account">مشاهده بخش ←</a></article>
+<article class="service"><span class="slot"><img src="../image/-2147483648_-210231.jpg" alt="#" height="50px" width="50px" style="border-radius: 30px;"></span><h3>چالش حرکات</h3><a href="#account">مشاهده بخش ←</a></article>
+</div>
+</div></section>
+<section class="section coaches" id="coaches"><div class="container"><div class="heading"><div><h2>مربیان باشگاه</h2><p>آموزش، همراهی و پیشرفت</p></div></div>
+<div class="coachGrid">
+<article class="coach"><div class="coachPhoto">جای عکس</div><h3>آقای سلیمی</h3><p>مربی آمادگی جسمانی<br>و جودوی مسابقاتی</p><div class="line"></div></article>
+<article class="coach"><div class="coachPhoto">جای عکس</div><h3>آقای خیرمند</h3><p>مربی اصلی جودو</p><div class="line"></div></article>
+<article class="coach"><div class="coachPhoto">جای عکس</div><h3>آقای فراشی</h3><p>مربی آمادگی جسمانی</p><div class="line"></div></article>
+<article class="coach"><div class="coachPhoto">جای عکس</div><h3>آقای اردش</h3><p>مربی جودو</p><div class="line"></div></article>
+</div></div></section>
+</main>
+
+<section class="section specialists" id="specialists">
+  <div class="container">
+    <div class="heading">
+      <div><h2>متخصصان ما</h2><p>تخصص، خلاقیت و همراهی در مسیر پیشرفت</p></div>
+    </div>
+    <div class="specialistGrid">
+      <article class="specialist">
+        <div class="specialistPhoto"><img src="../image/InShot_20261021_220048441.jpg" alt="#" height="82px" width="82px" style="border-radius: 20px;"></div>
+        <h3>بجستان</h3>
+        <p>متخصص بک‌اند و فرانت‌اند</p>
+      </article>
+      <article class="specialist">
+        <div class="specialistPhoto"><img src="../image/InShot_20261021_220122677.jpg" alt="#" height="82px" width="82px"  style="border-radius: 20px;"></div>
+        <h3>ملاصالحی</h3>
+        <p>متخصص بک‌اند</p>
+      </article>
+      <article class="specialist">
+        <div class="specialistPhoto"><img src="../image/InShot_20261021_215948860.jpg" alt="#"  height="82px" width="82px"  style="border-radius: 20px;"></div>
+        <h3>طاهری</h3>
+        <p>متخصص فرانت‌اند</p>
+      </article>
+      <article class="specialist">
+        <div class="specialistPhoto"><img src="../image/InShot_20261021_220222067.jpg" alt="#"  height="82px" width="82px"  style="border-radius: 20px;"></div>
+        <h3>وطن سیستم</h3>
+        <p>هکر</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<footer id="account"><div class="container footerGrid">
+<div><div class="footerBrand"><div class="footerLogo" style="position: relative;"><img src="../image/ChatGPT Image ۲۳ مهر ۱۴۰۵، ۱۰_۰۷_۰۶.png" alt="#s" style="height: 92px; width: 92px; position: absolute; border-radius: 50px;"></div><h3>مجموعه ورزشی<br><span>ابوفاضل(ع)</span></h3></div><p class="muted">بستری برای رشد، آموزش و پیشرفت ورزشی؛ قدم‌به‌قدم در مسیر قدرت، نظم و آمادگی جسمانی.</p></div>
+<div class="quickLinks"><h3 class="quickTitle">دسترسی سریع</h3><a href="#home">صفحه اصلی</a><a href="#services">ورزش فردی</a><a href="#services">باشگاه</a><a href="#services">تغذیه</a><a href="#services">چالش‌های ورزشی</a></div>
+<div class="otherSites"><h3 class="quickTitle">دیگر سایت‌های ما</h3><a href="#" title="نشانی سایت فرهنگی را وارد کنید">سایت فرهنگی</a><a href="#" title="نشانی سایت پذیرش و اطلاع‌رسانی را وارد کنید">سایت پذیرش و اطلاع‌رسانی</a><a href="#" title="نشانی سایت آموزش را وارد کنید">سایت آموزش</a></div>
+<div><h3 class="contactTitle">ارتباط با ما</h3><div class="contactIcons"><div class="contactItem"><span class="slot"><img src="../image/New-Logo-of-Bale.svg" alt="#"></span><span>بله</span></div><div class="contactItem"><span class="slot" style="position: relative;"><img src="../image/3927_0b389212a690594f6a2daa242733dae7.png" alt="#" style="position: absolute; height: 34px; width: 34px;"></span><span>تلفن</span></div></div><div class="phone"><a class="field" href="tel:094581678186" dir="ltr" style="display:block;text-align:center">09053360577</a></div></div>
+<div class="authWrap"><div class="auth"><div class="tabs"><button class="tab active" data-tab="register" type="button">ثبت‌نام</button><button class="tab" data-tab="login" type="button">ورود</button></div>
+<form id="authForm"><div class="fields" id="fields">
+<input class="field" name="first" placeholder="نام" required><input class="field" name="last" placeholder="نام خانوادگی" required>
+<input class="field full" name="phone" type="tel" placeholder="شماره تلفن" required><input class="field full" name="password" type="password" placeholder="رمز عبور جدید" required>
+<div class="codeRow full"><input class="field" name="code" inputmode="numeric" placeholder="کد پیامکی"><button class="send" id="send" type="button">ارسال کد پیامکی</button></div></div>
+<button class="btn green submit" id="submit" type="submit">ثبت‌نام ←</button><p class="note" id="note">اطلاعات حساب در همین مرورگر ذخیره می‌شود؛ ارسال پیامک نیازمند سرویس پیامک است.</p></form></div></div>
+</div><div class="container copyright"><span>© تمامی حقوق این سایت محفوظ است. هرگونه کپی‌برداری پیگرد قانونی دارد.</span><strong>تربیت بدنی گروه ابوفاضل(ع)</strong></div></footer>
+
+
+<script>
+const mobile=document.getElementById('mobile'),links=document.getElementById('links');
+mobile.addEventListener('click',()=>{let open=links.classList.toggle('open');mobile.setAttribute('aria-expanded',String(open))});
+links.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{links.classList.remove('open');mobile.setAttribute('aria-expanded','false')}));
+document.getElementById('showAll').addEventListener('click',()=>{let extra=document.getElementById('extra');let open=extra.classList.toggle('show');document.getElementById('showAll').textContent=open?'بستن بخش‌های بیشتر':'همه بخش‌ها'});
+let slide = 0;
+
+const slides = [...document.querySelectorAll('.slideImage')];
+const dots = [...document.querySelectorAll('.dot')];
+
+function setSlide(n) {
+  slide = (n + slides.length) % slides.length;
+
+  slides.forEach((img, i) =>
+    img.classList.toggle('active', i === slide)
+  );
+
+  dots.forEach((dot, i) =>
+    dot.classList.toggle('active', i === slide)
+  );
+}
+document.getElementById('next').onclick = () => setSlide(slide + 1);
+document.getElementById('prev').onclick = () => setSlide(slide - 1);
+
+dots.forEach((dot, i) => {
+  dot.onclick = () => setSlide(i);
+});
+const USERS_KEY='abufazl_users_v1';
+const CURRENT_USER_KEY='abufazl_current_user_v1';
+function getUsers(){try{return JSON.parse(localStorage.getItem(USERS_KEY)||'{}')}catch{return {}}}
+function showCurrentUser(){try{const u=JSON.parse(localStorage.getItem(CURRENT_USER_KEY)||'null');const btn=document.querySelector('a.btn[href="#account"]');if(u){if(btn)btn.textContent='سلام، '+(u.first||'کاربر');}else if(btn){btn.innerHTML='<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16"><path d="M3 14s-1 0-1-1 1-4 6-4 6 1 6 4-1 1-1 1zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6"/></svg> ورود | ثبت نام';}}catch{}}
+function wireSend(){let b=document.getElementById('send');if(b)b.onclick=()=>document.getElementById('note').textContent='ارسال پیامک واقعی نیازمند اتصال سرویس پیامک است.'}wireSend();
+document.querySelectorAll('.tab').forEach(tab=>tab.addEventListener('click',()=>{let reg=tab.dataset.tab==='register';document.querySelectorAll('.tab').forEach(t=>t.classList.toggle('active',t===tab));document.getElementById('fields').innerHTML=reg?'<input class="field" name="first" placeholder="نام" required><input class="field" name="last" placeholder="نام خانوادگی" required><input class="field full" name="phone" type="tel" placeholder="شماره تلفن" required><input class="field full" name="password" type="password" placeholder="رمز عبور جدید" required><div class="codeRow full"><input class="field" name="code" inputmode="numeric" placeholder="کد پیامکی"><button class="send" id="send" type="button">ارسال کد پیامکی</button></div>':'<input class="field full" name="phone" type="tel" placeholder="شماره تلفن" required><input class="field full" name="password" type="password" placeholder="رمز عبور" required>';document.getElementById('submit').textContent=reg?'ثبت‌نام ←':'ورود ←';document.getElementById('note').textContent=reg?'اطلاعات ثبت‌نام در همین مرورگر ذخیره می‌شود.':'برای ورود، شماره تلفن و رمز ثبت‌شده را وارد کن.';wireSend()}));
+document.getElementById('authForm').addEventListener('submit',e=>{e.preventDefault();const form=e.currentTarget;const data=new FormData(form);const phone=String(data.get('phone')||'').trim();const password=String(data.get('password')||'');const isRegister=document.querySelector('.tab[data-tab="register"]').classList.contains('active');const note=document.getElementById('note');if(!phone||!password){note.textContent='لطفاً شماره تلفن و رمز عبور را وارد کن.';return;}let users=getUsers();if(isRegister){const first=String(data.get('first')||'').trim(),last=String(data.get('last')||'').trim();if(!first||!last){note.textContent='لطفاً نام و نام خانوادگی را وارد کن.';return;}if(users[phone]){note.textContent='این شماره قبلاً ثبت شده است؛ از بخش ورود استفاده کن.';return;}const user={first,last,phone,password};users[phone]=user;try{localStorage.setItem(USERS_KEY,JSON.stringify(users));localStorage.setItem(CURRENT_USER_KEY,JSON.stringify({first,last,phone}));note.textContent='ثبت‌نام با موفقیت انجام شد؛ اطلاعات در این مرورگر ذخیره شد.';showCurrentUser();}catch{note.textContent='ذخیره‌سازی در این مرورگر در دسترس نیست.';}}else{const user=users[phone];if(!user||user.password!==password){note.textContent='شماره تلفن یا رمز عبور درست نیست، یا هنوز ثبت‌نام نکرده‌ای.';return;}localStorage.setItem(CURRENT_USER_KEY,JSON.stringify({first:user.first,last:user.last,phone:user.phone}));note.textContent='ورود موفق بود. سلام '+user.first+'!';showCurrentUser();}});
+showCurrentUser();
+</script></body></html>
