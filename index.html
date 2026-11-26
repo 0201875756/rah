@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>گروه علمی فرهنگی ابوفاضل علیه السلام</title>
 <link href="https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/Vazirmatn-font-face.css" rel="stylesheet">
-<link href="https://fonts.googleapis.com/css2?family=Lalezar&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Lalezar&family=Aref+Ruqaa:wght@400;700&display=swap" rel="stylesheet">
 
 <style>
 :root {
@@ -33,7 +33,27 @@ h1,h2,h3,h4{font-family:'Lalezar','Vazirmatn',sans-serif;font-weight:400}
 .blob-2{width:250px;height:250px;background:#f472b6;bottom:-80px;left:-50px;animation-delay:2s}
 .blob-3{width:200px;height:200px;background:#fbbf24;top:40%;left:20%;animation-delay:4s}
 .hero-content{position:relative;z-index:2;max-width:900px;margin:0 auto}
-.hero-logo{width:100px;height:100px;margin:0 auto 20px;background:var(--white);border:4px solid var(--teal);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:40px;color:var(--teal);box-shadow:0 15px 35px rgba(2,132,199,.3);animation:float 5s ease-in-out infinite}
+
+/* تایپوگرافی جدید بسم الله */
+.hero-logo-text {
+  font-family: 'Aref Ruqaa', 'Lalezar', serif;
+  font-size: 3.2rem;
+  font-weight: 700;
+  margin: 0 auto 25px;
+  text-align: center;
+  line-height: 1.4;
+  /* اعمال گرادیان رنگی سایت روی متن */
+  background: linear-gradient(90deg, var(--teal), var(--purple), var(--pink));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  color: transparent;
+  /* انیمیشن شناور و سایه رنگی */
+  animation: float 5s ease-in-out infinite;
+  filter: drop-shadow(0 10px 15px rgba(124, 58, 237, 0.25));
+  padding: 10px;
+}
+
 .hero h1{font-size:clamp(2.2rem,5vw,3.8rem);color:var(--text-main);margin-bottom:15px;line-height:1.2}
 .hero h1 span{background:linear-gradient(90deg,var(--teal),var(--purple),var(--pink));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
 .hero-slogan{font-size:1.1rem;color:var(--text-muted);margin-bottom:30px}
@@ -109,6 +129,7 @@ h1,h2,h3,h4{font-family:'Lalezar','Vazirmatn',sans-serif;font-weight:400}
 
 @media(max-width:768px){
   .hero{padding:80px 20px 60px}
+  .hero-logo-text{font-size: 2.2rem;}
   .navbar{margin:-25px 15px 30px;top:10px;border-radius:30px;transform:none}
   .nav-links{justify-content:flex-start}
   .slide-quote{font-size:1.1rem;padding:20px 25px}
@@ -127,7 +148,10 @@ h1,h2,h3,h4{font-family:'Lalezar','Vazirmatn',sans-serif;font-weight:400}
   <div class="blob blob-2"></div>
   <div class="blob blob-3"></div>
   <div class="hero-content">
-    <div class="hero-logo">﷽</div>
+    
+    <!-- تایپوگرافی زیبای بسم الله با گرادیان -->
+    <div class="hero-logo-text">بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ</div>
+    
     <h1>گروه علمی فرهنگی<br><span>ابوفاضل علیه السلام</span></h1>
     <div class="hero-slogan">
       <strong>فاستقم کما امرت</strong>
@@ -220,7 +244,7 @@ h1,h2,h3,h4{font-family:'Lalezar','Vazirmatn',sans-serif;font-weight:400}
   <div class="slider-container reveal" id="mentorSlider">
     <div class="slide active">
       <div class="mentor-photo-circle">
-        <img src="IMG_20260514_154450.jpg">
+        <img src="IMG_20260514_154450.jpg" alt="آقا سلیمی">
       </div>
       <h3 class="mentor-name">آقا سلیمی</h3>
       <span class="mentor-role">مربی گروه</span>
