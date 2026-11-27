@@ -5,11 +5,11 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>گروه علمی فرهنگی ابوفاضل علیه السلام</title>
 <link href="https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/Vazirmatn-font-face.css" rel="stylesheet">
-<link href="https://fonts.googleapis.com/css2?family=Lalezar&family=Aref+Ruqaa:wght@400;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Lalezar&display=swap" rel="stylesheet">
 
 <style>
 :root {
-  --bg:#f4f7fb; --white:#fff; --text-main:#0f172a; --text-muted:#475569;
+  --bg:#f8fafc; --white:#fff; --text-main:#0f172a; --text-muted:#475569;
   --teal:#0284c7; --yellow:#eab308; --orange:#ea580c;
   --purple:#7c3aed; --pink:#db2777; --green:#059669;
   --shadow-sm:0 4px 6px -1px rgba(0,0,0,.05);
@@ -23,75 +23,116 @@ a{text-decoration:none;color:inherit}
 h1,h2,h3,h4{font-family:'Lalezar','Vazirmatn',sans-serif;font-weight:400}
 .reveal{opacity:0;transform:translateY(30px);transition:all .8s cubic-bezier(.5,0,0,1)}
 .reveal.active{opacity:1;transform:translateY(0)}
-@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-15px)}}
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
 @keyframes blob{0%{transform:translate(0,0) scale(1)}33%{transform:translate(30px,-50px) scale(1.1)}66%{transform:translate(-20px,20px) scale(.9)}100%{transform:translate(0,0) scale(1)}}
 
+/* دکمه ورود به پنل - بالا سمت چپ */
+.panel-btn {
+  position: fixed;
+  top: 20px;
+  left: 20px; /* سمت چپ صفحه */
+  z-index: 10000;
+  background: linear-gradient(135deg, var(--teal), var(--purple));
+  color: white;
+  padding: 10px 25px;
+  border-radius: 30px;
+  font-weight: 700;
+  font-size: 0.95rem;
+  box-shadow: 0 8px 20px rgba(124,58,237,0.4);
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.panel-btn:hover {
+  transform: translateY(-3px) scale(1.05);
+  box-shadow: 0 12px 25px rgba(124,58,237,0.6);
+}
+
 /* هدر */
-.hero{position:relative;padding:90px 20px 70px;text-align:center;overflow:hidden;background:linear-gradient(135deg,#e0f2fe 0%,#f3e8ff 50%,#fef3c7 100%);border-bottom:2px solid #cbd5e1}
+.hero{position:relative;padding:100px 20px 80px;text-align:center;overflow:hidden;background:linear-gradient(135deg,#e0f2fe 0%,#f3e8ff 50%,#fef3c7 100%);border-bottom:2px solid rgba(255,255,255,.5)}
 .blob{position:absolute;filter:blur(60px);z-index:0;opacity:.7;animation:blob 10s infinite alternate}
 .blob-1{width:300px;height:300px;background:#38bdf8;top:-80px;right:-50px}
 .blob-2{width:250px;height:250px;background:#f472b6;bottom:-80px;left:-50px;animation-delay:2s}
 .blob-3{width:200px;height:200px;background:#fbbf24;top:40%;left:20%;animation-delay:4s}
 .hero-content{position:relative;z-index:2;max-width:900px;margin:0 auto}
 
-/* تایپوگرافی جدید بسم الله */
-.hero-logo-text {
-  font-family: 'Aref Ruqaa', 'Lalezar', serif;
-  font-size: 3.2rem;
+/* شعار اصلی با اعراب */
+.hero-slogan-main {
+  font-family: 'Lalezar', 'Vazirmatn', sans-serif;
+  font-size: clamp(2.5rem, 8vw, 4.5rem);
+  background: linear-gradient(135deg, var(--teal), var(--purple), var(--pink));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-bottom: 5px;
+  line-height: 1.6;
+  animation: float 4s ease-in-out infinite;
+  filter: drop-shadow(0 15px 25px rgba(124,58,237,0.3));
+  padding-top: 15px;
+}
+.hero-slogan-sub {
+  font-size: clamp(1rem, 3vw, 1.3rem);
+  color: var(--text-muted);
+  margin-bottom: 30px;
   font-weight: 700;
-  margin: 0 auto 25px;
-  text-align: center;
+  font-family: 'Vazirmatn', sans-serif;
+}
+.hero-divider {
+  width: 120px;
+  height: 4px;
+  background: linear-gradient(90deg, transparent, var(--teal), var(--pink), transparent);
+  margin: 0 auto 30px;
+  border-radius: 10px;
+}
+
+/* تیتر گروه با گرادیان */
+.hero-brand {
+  font-size: clamp(1.8rem, 5vw, 2.8rem);
+  margin-bottom: 35px;
   line-height: 1.4;
-  /* اعمال گرادیان رنگی سایت روی متن */
+}
+.hero-brand span {
   background: linear-gradient(90deg, var(--teal), var(--purple), var(--pink));
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  background-clip: text;
-  color: transparent;
-  /* انیمیشن شناور و سایه رنگی */
-  animation: float 5s ease-in-out infinite;
-  filter: drop-shadow(0 10px 15px rgba(124, 58, 237, 0.25));
-  padding: 10px;
 }
 
-.hero h1{font-size:clamp(2.2rem,5vw,3.8rem);color:var(--text-main);margin-bottom:15px;line-height:1.2}
-.hero h1 span{background:linear-gradient(90deg,var(--teal),var(--purple),var(--pink));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
-.hero-slogan{font-size:1.1rem;color:var(--text-muted);margin-bottom:30px}
-.hero-slogan strong{display:block;font-size:1.6rem;color:var(--orange);margin-bottom:5px;font-family:'Lalezar',sans-serif}
-.hero-btn{display:inline-block;padding:14px 40px;background:linear-gradient(135deg,var(--teal),var(--purple));color:#fff;font-weight:700;font-size:1rem;border-radius:50px;box-shadow:0 15px 30px -5px rgba(124,58,237,.4);transition:all .3s;border:none;cursor:pointer;font-family:'Vazirmatn',sans-serif}
-.hero-btn:hover{transform:translateY(-3px) scale(1.05);box-shadow:0 20px 40px -5px rgba(124,58,237,.6)}
+.hero-btn{display:inline-block;padding:16px 45px;background:linear-gradient(135deg,var(--teal),var(--purple));color:#fff;font-weight:700;font-size:1.1rem;border-radius:50px;box-shadow:0 15px 30px -5px rgba(124,58,237,.4);transition:all .3s;border:none;cursor:pointer;font-family:'Vazirmatn',sans-serif}
+.hero-btn:hover{transform:translateY(-4px) scale(1.05);box-shadow:0 20px 40px -5px rgba(124,58,237,.6)}
 
 /* منو */
-.navbar{position:sticky;top:15px;z-index:1000;max-width:1000px;margin:0 auto;background:rgba(255,255,255,.95);backdrop-filter:blur(15px);border:1px solid rgba(255,255,255,.8);border-radius:60px;box-shadow:0 10px 30px rgba(0,0,0,.08);padding:0 15px;transform:translateY(-50%)}
+.navbar{position:sticky;top:15px;z-index:1000;max-width:1000px;margin:0 auto;background:rgba(255,255,255,.85);backdrop-filter:blur(20px);border:1px solid rgba(255,255,255,.9);border-radius:60px;box-shadow:0 10px 30px rgba(0,0,0,.08);padding:0 15px;transform:translateY(-50%)}
 .nav-links{display:flex;list-style:none;gap:5px;overflow-x:auto;padding:10px 0;justify-content:center}
 .nav-links::-webkit-scrollbar{display:none}
 .nav-links a{display:block;padding:10px 22px;font-weight:700;font-size:.95rem;color:var(--text-muted);border-radius:40px;transition:all .3s;white-space:nowrap}
 .nav-links a:hover{color:var(--white);background:linear-gradient(135deg,var(--teal),var(--purple));box-shadow:0 5px 15px rgba(2,132,199,.4)}
 
 /* بخش‌ها */
-.section{padding:70px 20px 80px;max-width:1200px;margin:0 auto}
+.section{padding:80px 20px;max-width:1200px;margin:0 auto}
 .section-header{text-align:center;margin-bottom:50px}
 .section-title{font-size:2.5rem;color:var(--text-main);margin-bottom:10px;position:relative;display:inline-block}
 .section-title::after{content:'';position:absolute;bottom:-5px;left:50%;transform:translateX(-50%);width:60px;height:4px;background:linear-gradient(90deg,var(--teal),var(--pink),var(--yellow));border-radius:5px}
 .section-subtitle{color:var(--text-muted);font-size:1rem;font-family:'Vazirmatn',sans-serif;margin-top:15px}
-.grid-cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:20px}
-.card{background:var(--white);border-radius:16px;padding:25px 20px;text-align:center;position:relative;overflow:hidden;transition:all .3s ease;box-shadow:var(--shadow-sm);border:1px solid #e2e8f0;display:flex;flex-direction:column;align-items:center;z-index:1}
+
+/* چیدمان دو ستونه کارت‌ها */
+.grid-cards{display:grid;grid-template-columns:repeat(2,1fr);gap:15px}
+.card{background:var(--white);border-radius:20px;padding:20px 15px;text-align:center;position:relative;overflow:hidden;transition:all .3s ease;box-shadow:var(--shadow-sm);border:1px solid #e2e8f0;display:flex;flex-direction:column;align-items:center;z-index:1}
 .card::before{content:'';position:absolute;top:0;left:0;width:100%;height:5px;background:var(--card-color,var(--teal));transition:height .3s ease}
-.card:hover{transform:translateY(-6px);box-shadow:var(--shadow-md);border-color:var(--card-color)}
+.card:hover{transform:translateY(-5px);box-shadow:var(--shadow-md);border-color:var(--card-color);background:var(--icon-bg)}
 .c-teal{--card-color:var(--teal);--icon-bg:#e0f2fe}
 .c-yellow{--card-color:var(--yellow);--icon-bg:#fef08a}
 .c-orange{--card-color:var(--orange);--icon-bg:#ffedd5}
 .c-purple{--card-color:var(--purple);--icon-bg:#f3e8ff}
 .c-green{--card-color:var(--green);--icon-bg:#d1fae5}
 .c-pink{--card-color:var(--pink);--icon-bg:#fce7f3}
-.card-icon{width:65px;height:65px;border-radius:16px;display:flex;align-items:center;justify-content:center;font-size:28px;margin-bottom:15px;background:var(--icon-bg);color:var(--card-color);transition:all .3s ease}
+.card-icon{width:55px;height:55px;border-radius:16px;display:flex;align-items:center;justify-content:center;font-size:26px;margin-bottom:12px;background:var(--icon-bg);color:var(--card-color);transition:all .3s ease}
 .card:hover .card-icon{background:var(--card-color);color:var(--white);transform:scale(1.1) rotate(-5deg)}
-.card h3{font-size:1.3rem;color:var(--text-main);margin-bottom:8px}
-.card p{color:var(--text-muted);font-size:.85rem;font-family:'Vazirmatn',sans-serif;line-height:1.6;flex-grow:1}
+.card h3{font-size:1.1rem;color:var(--text-main);margin-bottom:8px}
+.card p{color:var(--text-muted);font-size:.8rem;font-family:'Vazirmatn',sans-serif;line-height:1.5;flex-grow:1}
 
 /* قلب خاطرات */
-.memories-section{padding:80px 20px;max-width:1200px;margin:0 auto;border-top:2px solid #e2e8f0}
-.memory-slider{position:relative;max-width:900px;height:450px;margin:auto;overflow:hidden;border-radius:22px;box-shadow:var(--shadow-lg);background:#e2e8f0;border:5px solid var(--white)}
+.memories-section{padding:80px 20px;background:linear-gradient(180deg, #fff 0%, #f3e8ff 100%);border-top:2px solid #e2e8f0}
+.memory-slider{position:relative;max-width:900px;height:450px;margin:auto;overflow:hidden;border-radius:24px;box-shadow:var(--shadow-lg);background:linear-gradient(135deg, #e0f2fe, #f3e8ff);border:5px solid var(--white)}
 .memory-slider img{width:100%;height:100%;object-fit:cover;display:block;opacity:1;transition:opacity .6s ease}
 .memory-slider img.fade{opacity:0}
 .memory-caption{position:absolute;bottom:0;width:100%;padding:45px 20px 20px;color:#fff;font-size:1.4rem;font-family:'Lalezar',sans-serif;background:linear-gradient(transparent,rgba(0,0,0,.8));text-align:center;pointer-events:none}
@@ -101,25 +142,25 @@ h1,h2,h3,h4{font-family:'Lalezar','Vazirmatn',sans-serif;font-weight:400}
 .memory-btn.next{left:15px}
 .memory-dots{display:flex;justify-content:center;gap:10px;margin-top:20px}
 .memory-dot{width:10px;height:10px;border-radius:50%;background:#cbd5e1;cursor:pointer;transition:.3s}
-.memory-dot.active{width:28px;border-radius:10px;background:var(--teal)}
+.memory-dot.active{width:28px;border-radius:10px;background:var(--purple)}
 
 /* کلام مربی */
-.mentor-section{background:linear-gradient(180deg,#fff 0%,#f0f4f8 100%);padding:80px 20px;border-top:2px solid #e2e8f0;position:relative;overflow:hidden}
+.mentor-section{background:linear-gradient(180deg,#f3e8ff 0%,#e0f2fe 100%);padding:80px 20px;border-top:2px solid #e2e8f0;position:relative;overflow:hidden}
 .slider-container{max-width:850px;margin:0 auto;position:relative;min-height:420px;z-index:1}
 .slide{position:absolute;top:0;left:0;width:100%;opacity:0;visibility:hidden;transform:translateY(20px) scale(.95);transition:all .5s cubic-bezier(.4,0,.2,1);display:flex;flex-direction:column;align-items:center;text-align:center}
 .slide.active{opacity:1;visibility:visible;transform:translateY(0) scale(1)}
-.mentor-photo-circle{width:120px;height:120px;border-radius:50%;background:#f1f5f9;border:4px solid var(--teal);display:flex;align-items:center;justify-content:center;margin-bottom:20px;box-shadow:0 10px 25px rgba(2,132,199,.2);position:relative;overflow:hidden;transition:border-color .3s}
+.mentor-photo-circle{width:120px;height:120px;border-radius:50%;background:#f1f5f9;border:4px solid var(--purple);display:flex;align-items:center;justify-content:center;margin-bottom:20px;box-shadow:0 10px 25px rgba(124,58,237,.2);position:relative;overflow:hidden;transition:border-color .3s}
 .mentor-photo-circle img{width:100%;height:100%;object-fit:cover}
 .mentor-name{font-size:2rem;color:var(--text-main);margin-bottom:5px}
-.mentor-role{font-size:.9rem;color:var(--teal);font-weight:700;margin-bottom:20px;font-family:'Vazirmatn',sans-serif;background:#e0f2fe;padding:5px 20px;border-radius:20px;display:inline-block}
-.slide-quote{font-size:1.3rem;font-weight:600;line-height:2;color:var(--text-main);position:relative;padding:25px 35px;background:var(--white);border-radius:16px;box-shadow:var(--shadow-md);border-right:5px solid var(--teal);max-width:700px}
-.slide-quote::before{content:'”';font-size:5rem;color:var(--teal);position:absolute;top:-15px;right:10px;opacity:.15;font-family:serif;line-height:1}
+.mentor-role{font-size:.9rem;color:var(--purple);font-weight:700;margin-bottom:20px;font-family:'Vazirmatn',sans-serif;background:#f3e8ff;padding:5px 20px;border-radius:20px;display:inline-block}
+.slide-quote{font-size:1.3rem;font-weight:600;line-height:2;color:var(--text-main);position:relative;padding:25px 35px;background:rgba(255,255,255,.8);backdrop-filter:blur(10px);border-radius:16px;box-shadow:var(--shadow-md);border-right:5px solid var(--purple);max-width:700px}
+.slide-quote::before{content:'”';font-size:5rem;color:var(--purple);position:absolute;top:-15px;right:10px;opacity:.15;font-family:serif;line-height:1}
 .slider-dots{display:flex;justify-content:center;gap:12px;margin-top:30px;position:relative;z-index:1}
 .dot{width:12px;height:12px;border-radius:50%;background:#cbd5e1;cursor:pointer;transition:all .3s}
 .dot.active{background:linear-gradient(135deg,var(--teal),var(--purple));width:30px;border-radius:10px;box-shadow:0 5px 15px rgba(2,132,199,.4)}
 
 /* فوتر */
-.footer{background:#0f172a;color:var(--white);padding:60px 20px 30px;text-align:center;border-top:6px solid var(--teal)}
+.footer{background:#0f172a;color:var(--white);padding:60px 20px 30px;text-align:center;border-top:6px solid var(--purple)}
 .footer h4{font-size:1.6rem;color:var(--yellow);margin-bottom:10px}
 .footer p{color:#94a3b8;font-family:'Vazirmatn';margin-bottom:30px}
 .footer-links{display:flex;justify-content:center;gap:30px;flex-wrap:wrap;margin-bottom:40px;font-family:'Vazirmatn'}
@@ -127,21 +168,41 @@ h1,h2,h3,h4{font-family:'Lalezar','Vazirmatn',sans-serif;font-weight:400}
 .footer-links a:hover{color:var(--teal)}
 .footer-bottom{padding-top:25px;border-top:1px solid rgba(255,255,255,.1);color:#64748b;font-size:.85rem;font-family:'Vazirmatn'}
 
+/* تنظیمات موبایل */
 @media(max-width:768px){
-  .hero{padding:80px 20px 60px}
-  .hero-logo-text{font-size: 2.2rem;}
-  .navbar{margin:-25px 15px 30px;top:10px;border-radius:30px;transform:none}
-  .nav-links{justify-content:flex-start}
+  .hero{padding:80px 15px 60px}
+  .panel-btn { top: 15px; left: 15px; padding: 8px 16px; font-size: 0.8rem; }
+  .navbar{margin:-25px 10px 30px;top:10px;border-radius:30px;transform:none;padding:0 10px}
+  .nav-links a{padding:8px 16px;font-size:.85rem}
   .slide-quote{font-size:1.1rem;padding:20px 25px}
-  .slider-container{min-height:450px}
+  .slider-container{min-height:480px}
   .section-title{font-size:2rem}
   .mentor-name{font-size:1.6rem}
-  .memory-slider{height:280px}
+  .memory-slider{height:250px;border-radius:16px}
+  
+  .grid-cards{gap:10px}
+  .card{padding:15px 10px;border-radius:16px}
+  .card-icon{width:45px;height:45px;font-size:20px;margin-bottom:8px;border-radius:12px}
+  .card h3{font-size:.95rem;margin-bottom:5px}
+  .card p{font-size:.7rem;line-height:1.4}
+}
+
+@media(min-width:769px){
+  .grid-cards{grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:20px}
+  .card{padding:25px 20px}
+  .card-icon{width:65px;height:65px;font-size:28px;margin-bottom:15px}
+  .card h3{font-size:1.3rem}
+  .card p{font-size:.85rem;line-height:1.6}
 }
 </style>
 </head>
 
 <body>
+
+<!-- دکمه شناور ورود به پنل در بالا سمت چپ -->
+<a href="panel.php" class="panel-btn">
+  <span>🔑</span> ورود به پنل
+</a>
 
 <header class="hero">
   <div class="blob blob-1"></div>
@@ -149,14 +210,13 @@ h1,h2,h3,h4{font-family:'Lalezar','Vazirmatn',sans-serif;font-weight:400}
   <div class="blob blob-3"></div>
   <div class="hero-content">
     
-    <!-- تایپوگرافی زیبای بسم الله با گرادیان -->
-    <div class="hero-logo-text">بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ</div>
+    <h1 class="hero-slogan-main">فَاسْتَقِمْ كَمَا أُمِرْتَ</h1>
+    <p class="hero-slogan-sub">در کارهایی که به تو سپرده شده ایستادگی کن</p>
     
-    <h1>گروه علمی فرهنگی<br><span>ابوفاضل علیه السلام</span></h1>
-    <div class="hero-slogan">
-      <strong>فاستقم کما امرت</strong>
-      در کارهایی که به تو سپرده شده ایستادگی کن
-    </div>
+    <div class="hero-divider"></div>
+    
+    <h2 class="hero-brand">گروه علمی فرهنگی<br><span>ابوفاضل علیه السلام</span></h2>
+    
     <a href="#sections" class="hero-btn">مشاهده بخش‌ها</a>
   </div>
 </header>
@@ -166,7 +226,6 @@ h1,h2,h3,h4{font-family:'Lalezar','Vazirmatn',sans-serif;font-weight:400}
     <li><a href="#sections">بخش‌ها</a></li>
     <li><a href="#memories" style="color:var(--pink)">قلب خاطرات ❤️</a></li>
     <li><a href="#کلام-مربی">کلام مربی</a></li>
-    <li><a href="panel.php" style="background:var(--teal);color:white">ورود به پنل</a></li>
   </ul>
 </nav>
 
@@ -177,46 +236,40 @@ h1,h2,h3,h4{font-family:'Lalezar','Vazirmatn',sans-serif;font-weight:400}
   </div>
   <div class="grid-cards">
     
-    <!-- کارت ۱: اطلاع رسانی -->
     <a href="news.php" class="card reveal c-teal" id="اطلاع-رسانی">
       <div class="card-icon">📢</div>
       <h3>اطلاع رسانی</h3>
-      <p>اطلاع‌رسانی برنامه‌ها، رویدادها و اخبار گروه به اعضا و خانواده‌ها.</p>
+      <p>اطلاع‌رسانی برنامه‌ها و اخبار گروه به اعضا.</p>
     </a>
 
-    <!-- کارت ۲: حضور و غیاب -->
     <a href="attendance.php" class="card reveal c-yellow" id="حضور-غیاب">
       <div class="card-icon">✅</div>
       <h3>حضور و غیاب</h3>
-      <p>ثبت و پیگیری حضور منظم اعضا در جلسات و برنامه‌های گروه.</p>
+      <p>ثبت و پیگیری حضور منظم اعضا در جلسات.</p>
     </a>
 
-    <!-- کارت ۳: فرهنگی -->
     <a href="cultural.php" class="card reveal c-orange" id="فرهنگی">
       <div class="card-icon">📚</div>
       <h3>فرهنگی</h3>
-      <p>برنامه‌های مذهبی و مناسبتی با محوریت تقویت باورهای دینی.</p>
+      <p>برنامه‌های مذهبی و مناسبتی تقویت باورها.</p>
     </a>
 
-    <!-- کارت ۴: تربیت بدنی -->
     <a href="index-slider-fixed(1) (1).html" class="card reveal c-purple" id="تربیت-بدنی">
       <div class="card-icon">⚽</div>
       <h3>تربیت بدنی</h3>
-      <p>فعالیت‌های ورزشی و برنامه‌های نشاط‌آور برای سلامت جسم و روح.</p>
+      <p>فعالیت‌های ورزشی و نشاط‌آور برای سلامت.</p>
     </a>
 
-    <!-- کارت ۵: تدارکات -->
     <a href="logistics.php" class="card reveal c-green" id="تدارکات">
       <div class="card-icon">📦</div>
       <h3>تدارکات</h3>
-      <p>تأمین امکانات و مقدمات لازم برای برگزاری هرچه بهتر برنامه‌ها.</p>
+      <p>تأمین امکانات و مقدمات برگزاری برنامه‌ها.</p>
     </a>
 
-    <!-- کارت ۶: مهارت و آموزش -->
     <a href="training.php" class="card reveal c-pink" id="مهارت-آموزش">
       <div class="card-icon">🎓</div>
       <h3>مهارت و آموزش</h3>
-      <p>برگزاری دوره‌های مهارت‌آموزی و کارگاه‌های تخصصی برای رشد اعضا.</p>
+      <p>برگزاری دوره‌های مهارت‌آموزی و کارگاه‌ها.</p>
     </a>
 
   </div>
@@ -228,7 +281,8 @@ h1,h2,h3,h4{font-family:'Lalezar','Vazirmatn',sans-serif;font-weight:400}
     <p class="section-subtitle">لحظات ناب و به‌یادماندنی گروه علمی فرهنگی ابوفاضل علیه السلام</p>
   </div>
   <div class="memory-slider reveal">
-    <img id="memorySlide" src="images/memory1.jpg" alt="خاطرات گروه">
+    <!-- توجه: مسیر عکس اول را دقیقا با نام و پسوند فایل خودتان تنظیم کنید -->
+    <img id="memorySlide" src="29-aboofazel.jpg" alt="خاطرات گروه">
     <div class="memory-caption" id="memoryCaption">لحظه‌های ماندگار</div>
     <button class="memory-btn prev" onclick="changeMemory(-1)" aria-label="عکس قبلی">❮</button>
     <button class="memory-btn next" onclick="changeMemory(1)" aria-label="عکس بعدی">❯</button>
@@ -276,7 +330,7 @@ h1,h2,h3,h4{font-family:'Lalezar','Vazirmatn',sans-serif;font-weight:400}
 
 <footer class="footer reveal">
   <h4>گروه علمی فرهنگی ابوفاضل علیه السلام</h4>
-  <p>فاستقم کما امرت</p>
+  <p>فَاسْتَقِمْ كَمَا أُمِرْتَ</p>
   <div class="footer-links">
     <a href="#">تماس با ما</a>
     <a href="#">درباره ما</a>
@@ -289,12 +343,13 @@ h1,h2,h3,h4{font-family:'Lalezar','Vazirmatn',sans-serif;font-weight:400}
 
 <script>
 // اسلایدر قلب خاطرات
+// ⚠️ نکته بسیار مهم: نام و مسیر عکس ها را دقیقاً اینجا وارد کنید. 
 const memoryImages = [
-  "29-aboofazel.jpg",
-  "images/memory2.jpg",
-  "images/memory3.jpg",
-  "images/memory4.jpg",
-  "images/memory5.jpg"
+  "29-aboofazel.jpg",           // عکس اول
+  "images/memory2.jpg",         // عکس دوم
+  "images/memory3.jpg",         // عکس سوم
+  "images/memory4.jpg",         // عکس چهارم
+  "images/memory5.jpg"          // عکس پنجم
 ];
 
 const memoryCaptions = [
@@ -330,10 +385,20 @@ function showMemory() {
   setTimeout(() => {
     memoryImg.src = memoryImages[memoryIndex];
     memoryCaption.textContent = memoryCaptions[memoryIndex];
+    
+    // مدیریت خطای لود عکس (اگر عکس پیدا نشد)
+    memoryImg.onerror = function() {
+      this.src = 'https://placehold.co/900x450/e2e8f0/475569?text=Image+Not+Found'; // عکس جایگزین
+      this.classList.remove("fade");
+    };
+    
     memoryImg.onload = () => memoryImg.classList.remove("fade");
+    
+    // اگر عکس در حافظه کش مرورگر بود، بلافاصله حالت محو را بردار
     if (memoryImg.complete && memoryImg.naturalWidth > 0) {
       memoryImg.classList.remove("fade");
     }
+    
     dots.forEach((dot, i) => dot.classList.toggle("active", i === memoryIndex));
   }, 300);
 }
